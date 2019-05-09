@@ -11,7 +11,7 @@ Vector3::Vector3(float x, float y, float z)
         , z(z)
 {}
 
-inline Vector3& Vector3::operator+=(const Vector3& rhs)
+Vector3& Vector3::operator+=(const Vector3& rhs)
 {
     this->x += rhs.x;
     this->y += rhs.y;
@@ -19,7 +19,7 @@ inline Vector3& Vector3::operator+=(const Vector3& rhs)
     return *this;
 }
 
-inline Vector3& Vector3::operator-=(const Vector3& rhs)
+Vector3& Vector3::operator-=(const Vector3& rhs)
 {
     this->x -= rhs.x;
     this->y -= rhs.y;
@@ -27,27 +27,27 @@ inline Vector3& Vector3::operator-=(const Vector3& rhs)
     return *this;
 }
 
-inline float Vector3::dot(const Vector3& rhs)
+float Vector3::dot(const Vector3& rhs)
 {
     return this->x * rhs.x + this->y * rhs.y + this->z * rhs.z;
 }
 
-inline Vector3 Vector3::cross(const Vector3& rhs)
+Vector3 Vector3::cross(const Vector3& rhs)
 {
     return Vector3(this->y * rhs.z - this->z * rhs.y,
                    this->z * rhs.x - this->x * rhs.z,
                    this->x * rhs.y - this->y * rhs.x);
 }
 
-inline float Vector3::norm()
+float Vector3::norm()
 {
     return std::sqrt(x * x + y * y + z * z);
 }
 
-inline Vector3& Vector3::normalize()
+Vector3& Vector3::normalize()
 {
     float norm = this->norm();
-    if ((float)norm != 0.0f)
+    if (norm != 0.0f)
     {
         x /= norm;
         y /= norm;
@@ -56,17 +56,17 @@ inline Vector3& Vector3::normalize()
     return *this;
 }
 
-inline Vector3 Vector3::inverse() const
+Vector3 Vector3::inverse() const
 {
     return Vector3(-this->x, -this->y, -this->z);
 }
 
-inline Vector3 operator+(const Vector3& lhs, const Vector3& rhs)
+Vector3 operator+(const Vector3& lhs, const Vector3& rhs)
 {
     return Vector3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
 }
 
-inline Vector3 operator-(const Vector3&lhs, const Vector3& rhs)
+Vector3 operator-(const Vector3&lhs, const Vector3& rhs)
 {
     return Vector3(lhs.x - rhs.x,lhs.y - rhs.y,lhs.z - rhs.z);
 }

@@ -67,10 +67,8 @@ void frustum(Matrix4& mat, const float &left, const float& right,
 void look_at(Matrix4& mat, const float& eyeX, const float& eyeY, const float& eyeZ,
              const float& centerX, const float& centerY, const float& centerZ,
              const float& upX, const float& upY, const float& upZ) {
-    auto f = Vector3(centerX - eyeX, centerY - eyeY, centerZ - eyeZ);
-    f.normalize();
-    auto up = Vector3(upX, upY, upZ);
-    up.normalize();
+    auto f = (Vector3(centerX - eyeX, centerY - eyeY, centerZ - eyeZ)).normalize();
+    auto up = (Vector3(upX, upY, upZ)).normalize();
     Vector3 s = f * up;
     Vector3 u = s.normalize() * f;
 

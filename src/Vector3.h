@@ -6,7 +6,6 @@
 #define TP1_VECTOR3_H
 
 #include <ostream>
-#include <stdexcept>
 #include <cmath>
 
 struct Vector3
