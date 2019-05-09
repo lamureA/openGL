@@ -3,7 +3,7 @@ project(tp1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(tp1 main.cpp Matrix4.cpp Matrix4.h Vector3.cpp Vector3.h)
+add_executable(tp1 src/main.cpp src/Matrix4.cpp src/Matrix4.h src/Vector3.cpp src/Vector3.h)
 
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
