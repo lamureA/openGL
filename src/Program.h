@@ -11,12 +11,13 @@ class Program {
 private:
     char *log;
     bool ready;
+    GLuint program_id;
 
     GLuint compile_shader(std::string& shader_src, GLenum shader_type);
     bool check_compile(GLuint shader);
 
-    GLuint link(GLuint vertex_shader, GLuint fragment_shader);
-    bool check_link(GLuint program_id);
+    void link(GLuint vertex_shader, GLuint fragment_shader);
+    bool check_link();
 
 public:
     Program();
