@@ -108,3 +108,16 @@ Program *Program::make_program(std::string &vertex_shader_src, std::string &frag
 
     return program;
 }
+
+char *Program::get_log() {
+    return log;
+}
+
+bool Program::is_ready() {
+    return ready;
+}
+
+void Program::use() {
+    if (this->is_ready())
+        glUseProgram(this->program_id);
+}
