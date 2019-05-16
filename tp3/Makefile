@@ -8,10 +8,10 @@
 
 CC = g++
 
-CPP_FILES = image.cpp  image_io.cpp
+CPP_FILES = src/image.cpp  src/image_io.cpp
 CPP_FILES +=
-HXX_FILES = image.hh  image_io.hh
-HXX_FILES += object_vbo.hh
+HXX_FILES = src/image.hh  src/image_io.hh
+HXX_FILES += src/object_vbo.hh
 OBJ_FILES = $(CPP_FILES:.cpp=.o)
 
 CXX_FLAGS += -Wall -Wextra -O3 -g -std=c++11
@@ -22,11 +22,12 @@ CXX_FLAGS += -fopt-info-vec-optimized #-fopt-info-vec-missed -ftree-vectorize
 LDXX_FLAGS = -lGL  -lGLEW -lglut -lpthread
 #LDXX_FLAGS += /home/jonathan/work/enseignement/matieres/synthese/prog/opengl/compute_shader/jf_gl_tools/dist_lib/libjfglt.a
 
-MAIN_FILE = main.cpp
+MAIN_FILE = src/main.cpp
 DIST = main
 
 SKEL_DIST_DIR = pogl_skel_tp
-SKEL_FILES = $(CPP_FILES) $(HXX_FILES) $(MAIN_FILE) Makefile vertex.shd fragment.shd texture.tga lighting.tga normalmap.tga
+SKEL_FILES = $(CPP_FILES) $(HXX_FILES) $(MAIN_FILE) Makefile shaders/vertex.shd shaders/fragment.shd
+SKEL_FILES += resources/texture.tga resources/lighting.tga resources/normalmap.tga
 
 
 #For gcc 4.9
