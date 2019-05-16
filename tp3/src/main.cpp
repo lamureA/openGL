@@ -41,7 +41,7 @@ void display() {
     tifo::rgb24_image *texture = new tifo::rgb24_image(800, 590);
     glReadPixels(150, 350, 800, 590, GL_RGB, GL_UNSIGNED_BYTE, texture->pixels);TEST_OPENGL_ERROR();
     //glReadPixels(0, 0, 1024, 1024, GL_RGB, GL_UNSIGNED_BYTE, texture->pixels);
-    tifo::save_image(*texture, "render.tga");
+    tifo::save_image(*texture, "resources/render.tga");
     std::cout << "Save " << std::endl;
     delete texture;
     //saved = true;
@@ -82,7 +82,7 @@ void init_GL() {
 
 
 void init_object_vbo() {
-  int max_nb_vbo = 0;
+  int max_nb_vbo = 5;
   int nb_vbo = 0;
   int index_vbo = 0;
   GLuint vbo_ids[max_nb_vbo];
@@ -142,9 +142,9 @@ void init_object_vbo() {
 }
 
 void init_textures() {
-  tifo::rgb24_image *texture = tifo::load_image("texture.tga");
-  tifo::rgb24_image *lighting = tifo::load_image("lighting.tga");
-  tifo::rgb24_image *normalmap = tifo::load_image("normalmap.tga");
+  tifo::rgb24_image *texture = tifo::load_image("resources/texture.tga");
+  tifo::rgb24_image *lighting = tifo::load_image("resources/lighting.tga");
+  tifo::rgb24_image *normalmap = tifo::load_image("resources/normalmap.tga");
   GLuint texture_id;
   GLuint lighting_id;
   GLuint normalmap_id;
@@ -222,8 +222,8 @@ std::string load(const std::string &filename) {
 }
 
 bool init_shaders() {
-  std::string vertex_src = load("vertex.shd");
-  std::string fragment_src = load("fragment.shd");
+  std::string vertex_src = load("shaders/vertex.shd");
+  std::string fragment_src = load("shaders/fragment.shd");
   GLuint shader_id[2];
   GLint compile_status = GL_TRUE;
   char *vertex_shd_src = (char*)std::malloc(vertex_src.length()*sizeof(char));
