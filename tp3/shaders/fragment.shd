@@ -1,6 +1,6 @@
 #version 450
 
-in vec4 interpolated_color;
+flat in vec4 interpolated_color;
 in vec2 interpolated_uv_position;
 
 uniform sampler2D texture_sampler;
