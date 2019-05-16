@@ -1,1 +1,1 @@
-# openGL-tp1
+# openGL EPITA Courses
