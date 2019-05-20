@@ -2,6 +2,7 @@
 
 in vec4 interpolated_color;
 in vec2 interpolated_uv_position;
+in vec4 gl_FragCoord;
 
 uniform sampler2D texture_sampler;
 uniform sampler2D lighting_sampler;
@@ -13,5 +14,5 @@ void main() {
     //vec4 texel1 = texture2D(texture_sampler, interpolated_uv_position);
     //vec4 texel2 = texture2D(lighting_sampler, interpolated_uv_position);
     float mean = interpolated_color.r + interpolated_color.g + interpolated_color.b / 3;
-    output_color = vec4(mean, mean, mean, 1);//vec4(texel1.rgb * texel2.rgb, 1.);
+    output_color = vec4(0, mean, 0, 1);//vec4(texel1.rgb * texel2.rgb, 1.);
 }
