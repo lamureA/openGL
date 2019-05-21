@@ -31,7 +31,10 @@ void main() {
     //vec4 texel1 = texture2D(texture_sampler, interpolated_uv_position);
     //vec4 texel2 = texture2D(lighting_sampler, interpolated_uv_position);
 
-    float fog = get_fog_factor(gl_FragCoord.z);
+    //float fog = get_fog_factor(gl_FragCoord.z);
 
-    output_color = mix(vec4(interpolated_color), fog_color, fog);//vec4(texel1.rgb * texel2.rgb, 1.);
+    if (int(gl_FragCoord.x) % 6 == 0 || int(gl_FragCoord.y) % 6 == 0)
+        output_color = vec4(0);
+    else
+        output_color = interpolated_color;//mix(vec4(interpolated_color), fog_color, fog);//vec4(texel1.rgb * texel2.rgb, 1.);
 }
