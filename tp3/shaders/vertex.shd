@@ -27,14 +27,14 @@ out vec2 interpolated_uv_position;
 void main() {
 
     // light computation
-    vec4 ligt_dir = vec4(light_position.xyz - position.xyz, 1);
+    /*vec4 ligt_dir = vec4(light_position.xyz - position.xyz, 1);
 	float coef = dot(normalize(normalSmooth.xyz), normalize(ligt_dir.xyz));
 	coef = clamp(coef, 0, 1);
 	interpolated_color = vec4(color*coef, 1.);
 	interpolated_uv_position = uv;
+    */
 
-
-    //interpolated_color = vec4(color, 1); // no light effects
+    interpolated_color = vec4(color, 1); // no light effects
 
     gl_Position = projection_matrix * model_view_matrix * vec4(position, 1.);
 }
