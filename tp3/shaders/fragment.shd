@@ -8,11 +8,30 @@ uniform sampler2D texture_sampler;
 uniform sampler2D lighting_sampler;
 uniform sampler2D normalmap_sampler;
 
+vec4 fog_color = vec4(1., 1., 1., 1.);
+
+
 layout(location=0) out vec4 output_color;
+
+float get_fog_factor(float d) {
+    const float FOG_MIN = 0.8;
+    const float FOG_MAX = 1.;
+
+    if (d >= FOG_MAX) {
+        return 1.;
+    }
+    else if (d <= FOG_MIN) {
+        return 0.;
+    }
+
+    return 1 - (FOG_MAX - d) / (FOG_MAX - FOG_MIN);
+}
 
 void main() {
     //vec4 texel1 = texture2D(texture_sampler, interpolated_uv_position);
     //vec4 texel2 = texture2D(lighting_sampler, interpolated_uv_position);
-    float mean = interpolated_color.r + interpolated_color.g + interpolated_color.b / 3;
-    output_color = vec4(0, mean * gl_FragCoord.z, 0, 1);//vec4(texel1.rgb * texel2.rgb, 1.);
+
+    float fog = get_fog_factor(gl_FragCoord.z);
+
+    output_color = mix(vec4(interpolated_color), fog_color, fog);//vec4(texel1.rgb * texel2.rgb, 1.);
 }
